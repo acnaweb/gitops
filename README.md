@@ -6,7 +6,7 @@ GitOps repo
 
 ### Code
 
-- CICD
+- CICD Pipeline coce
 - IaC
 
 ### Git
@@ -15,7 +15,13 @@ GitOps repo
 - Single place automation code tracking
 - Restricting users access to only git
 
-### 
+### Tools
+
+- GitHub Actions
+- Gitlab
+- ArgoCD
+- Tekton
+- Jenkins
 
 ## References
 
