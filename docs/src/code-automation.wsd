@@ -13,11 +13,17 @@ control "Job CD" as job_cd
 control "Cloud" as cloud
 
 dev -> git : Commit to "stage"
+
+== Continuous Integration ==
+
 git -> job_ci : Run job
 job_ci -> cloud : Plan + Tests
 dev -> git : Pull Request merge
 dev -> approver : Approves Pull Request 
 git -> git : Merge to "main"
+
+== Continuous Delivery ==
+
 git -> job_cd : Run job
 job_cd -> cloud : Apply changes
 

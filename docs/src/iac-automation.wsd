@@ -3,22 +3,37 @@
 autonumber
 skinparam maxMessageSize 200
 
-title IaC
+title IaC Workflow
+
 
 actor "Dev" as dev
 control "Git" as git
 control "Job CI" as job_ci
 actor "Approver" as approver
 control "Job CD" as job_cd
-control "Cloud" as cloud
+control "Sonar" as quality
+control "Maven" as test
+control "Docker" as container
+control "Registry" as registry
+control "Helm" as chart
 
 dev -> git : Commit to "stage"
+
+== Continuous Integration ==
+
 git -> job_ci : Run job
-job_ci -> cloud : Plan + Tests
+job_ci -> test : Unit test
+job_ci -> quality : Code quality
+job_ci -> quality : Coverage
 dev -> git : Pull Request merge
 dev -> approver : Approves Pull Request 
 git -> git : Merge to "main"
+
+== Continuous Delivery ==
+
 git -> job_cd : Run job
-job_cd -> cloud : Apply changes
+job_cd -> container : Build image
+job_cd -> registry : Push image
+job_cd -> chart : Deploy do Kubernetes
 
 @end
