@@ -6,7 +6,7 @@ GitOps repo
 
 ### Code
 
-- CICD Pipeline coce
+- CI/CD Pipeline code
 - IaC
 
 ### Git
@@ -22,6 +22,18 @@ GitOps repo
 - ArgoCD
 - Tekton
 - Jenkins
+
+## Usage
+
+### Git Repo
+
+#### Code
+
+![](assets/docs/src/code-automation/code-automation.png)
+
+#### IaC
+
+![](assets/docs/src/iac-automation/iac-automation.png)
 
 ## References
 

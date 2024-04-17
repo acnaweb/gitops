@@ -1,0 +1,24 @@
+@startuml
+
+autonumber
+skinparam maxMessageSize 200
+
+title IaC
+
+actor "Dev" as dev
+control "Git" as git
+control "Job CI" as job_ci
+actor "Approver" as approver
+control "Job CD" as job_cd
+control "Cloud" as cloud
+
+dev -> git : Commit to "stage"
+git -> job_ci : Run job
+job_ci -> cloud : Plan + Tests
+dev -> git : Pull Request merge
+dev -> approver : Approves Pull Request 
+git -> git : Merge to "main"
+git -> job_cd : Run job
+job_cd -> cloud : Apply changes
+
+@end
